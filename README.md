@@ -8,61 +8,38 @@ Bring your **own OpenAI API key**; nothing is stored in a database—draft histo
 
 **Demo:** Instead of a throwaway hosted page, **[see PostedIn in context on LinkedIn](https://www.linkedin.com/)** — replace that URL with your showcase post when you publish.
 
+## Contents
+
+| | |
+|--|--|
+| [1. Introduction](#1-introduction) | Logo / product mark |
+| [2. Project overview](#2-project-overview) | Full workspace in one frame |
+| [3. Compose workspace](#3-compose-workspace) | Prompt, mic, Input column |
+| [4. Output preview and actions](#4-output-preview-and-actions) | Feed-style streaming card |
+| [5. Refinement and draft history](#5-refinement-and-draft-history) | Refine thread |
+| [6. Responsive layout and accessibility](#6-responsive-layout-and-accessibility) | Narrow viewport stack |
+| [7. Features, model, and stack](#7-features-model-and-stack) | Output toolbar (actions in UI) |
+| [8. How to run and license](#8-how-to-run-and-license) | Draft history / session workflow |
+
+**One screenshot per section** (eight total). Drop matching files into `public/` when you capture them. `postedin-compose.png` is optional extra art if you want a dedicated Input-tab-only shot elsewhere.
+
+---
+
+## 1. Introduction
+
+PostedIn is for anyone who wants LinkedIn-ready copy without living inside a chat UI: one place to **compose**, **preview** like a real post, and **iterate** with short refine passes.
+
 <p align="center">
   <img width="480" alt="PostedIn logo mark" src="public/postedin-preview.png">
-</p>
-
-## Project Overview
-
-PostedIn helps you go from messy thoughts to a post-ready draft. The screenshots below follow **the order you actually use the app** — drop matching files into `public/` when you capture them.
-
-<p align="center">
-  <img width="932" alt="PostedIn full workspace overview" src="public/postedin-overview.png">
   <br>
-  <b>Figure 1: Full overview — nav, compose rail, and LinkedIn-style preview so readers instantly see the whole loop.</b>
+  <b>Figure 1: Product mark — quick visual anchor for the repo and docs.</b>
 </p>
 
-<p align="center">
-  <img width="800" alt="PostedIn compose column and Input tab" src="public/postedin-compose.png">
-  <br>
-  <b>Figure 2: Compose rail — the Input / Refine tabs and the column where you spend most of your time before the post exists.</b>
-</p>
+---
 
-<p align="center">
-  <img width="800" alt="PostedIn Prompt field with voice dictation" src="public/postedin-prompt-voice.png">
-  <br>
-  <b>Figure 3: Prompt area with the mic — dump bullets or ramble out loud; the sample field can sit in the same shot if it reads cleaner.</b>
-</p>
+## 2. Project overview
 
-<p align="center">
-  <img width="800" alt="PostedIn output preview card" src="public/postedin-output.png">
-  <br>
-  <b>Figure 4: Output preview — the feed-style card where the draft lands and streams in, so it feels like LinkedIn, not a chat bubble.</b>
-</p>
-
-<p align="center">
-  <img width="800" alt="PostedIn output actions Copy Regenerate Improve hook Sound more like me" src="public/postedin-output-actions.png">
-  <br>
-  <b>Figure 5: Under the card — Copy, Regenerate, Improve hook, and Sound more like me in one frame so the “what do I click next?” story is obvious.</b>
-</p>
-
-<p align="center">
-  <img width="800" alt="PostedIn Refine tab and thread" src="public/postedin-refine.png">
-  <br>
-  <b>Figure 6: Refine tab — the focused thread for “make it shorter,” “punchier CTA,” and the rest of the surgical passes.</b>
-</p>
-
-<p align="center">
-  <img width="800" alt="PostedIn Draft history chips and restore" src="public/postedin-draft-history.png">
-  <br>
-  <b>Figure 7: Draft history — chips and restore so people see how you rewind when a refine overshoots.</b>
-</p>
-
-<p align="center">
-  <img width="380" alt="PostedIn stacked layout on a narrow viewport" src="public/postedin-mobile.png">
-  <br>
-  <b>Figure 8: Mobile layout — compose and preview stack so the same workflow survives a narrow viewport.</b>
-</p>
+The app is built around a **compose rail** (Prompt, optional writing sample, tabs) and a **LinkedIn-style preview** so the loop—idea → draft → tweak—is obvious at a glance.
 
 - **Prompt + optional writing sample**: Dump bullets or paragraphs in the **Prompt**; paste old posts or emails in **Your writing sample** so generation mirrors your structure, line breaks, and voice. The sample is also used by **Sound more like me** after you have a draft.
 - **Compose tabs (Input / Refine)**: Keep **Input** for the big fields and **Refine** for a focused chat-style thread—without scrolling one long column.
@@ -72,7 +49,65 @@ PostedIn helps you go from messy thoughts to a post-ready draft. The screenshots
 - **Voice input (Prompt & Refine only)**: Microphone control uses the **Web Speech API** (best in Chromium browsers) to append transcribed text—**not** wired to the writing sample field.
 - **Output cleanup**: Server-side pass strips **em dashes** and swaps **curly quotes** for straight `'` and `"` so the text pastes cleanly elsewhere.
 
-## Features
+<p align="center">
+  <img width="932" alt="PostedIn full workspace overview" src="public/postedin-overview.png">
+  <br>
+  <b>Figure 2: Full overview — nav, compose rail, and LinkedIn-style preview so readers instantly see the whole loop.</b>
+</p>
+
+---
+
+## 3. Compose workspace
+
+**Input** holds the **Prompt** and **Your writing sample**; **Refine** lives on the other tab in the same rail. Before a draft exists, spend most of your time here: bullets, paragraphs, or **dictation** into Prompt (mic also works in **Refine**); paste representative writing so tone and structure carry into generation and into **Sound more like me** later.
+
+<p align="center">
+  <img width="500" alt="PostedIn Prompt field with voice dictation" src="public/postedin-prompt-voice.png">
+  <br>
+  <b>Figure 3: Prompt area with the mic — dump bullets or ramble out loud; include the sample field in the same shot if it reads cleaner.</b>
+</p>
+
+---
+
+## 4. Output preview and actions
+
+The draft **streams** into a **feed-style card** so it feels like LinkedIn, not a chat bubble. Under the card you get **Copy**, **Regenerate**, **Improve hook**, and **Sound more like me** (when a writing sample is present)—the obvious “what next?” actions (**section 7** has a dedicated shot of that toolbar).
+
+<p align="center">
+  <img width="500" alt="PostedIn output preview card" src="public/postedin-output.png">
+  <br>
+  <b>Figure 4: Output preview — the card where the draft lands and streams in.</b>
+</p>
+
+---
+
+## 5. Refinement and draft history
+
+**Refine** is a focused thread for surgical passes—“shorter,” “punchier CTA,” and the rest—without mixing them into the initial Prompt. **Draft history** chips (and **Restore this version** on bubbles) let you rewind when a refine overshoots; **section 8** shows the history UI in context.
+
+<p align="center">
+  <img width="500" alt="PostedIn Refine tab and thread" src="public/postedin-refine.png">
+  <br>
+  <b>Figure 5: Refine tab — the thread for iterative edits.</b>
+</p>
+
+---
+
+## 6. Responsive layout and accessibility
+
+On large screens you get **Compose / Output** side by side; on narrow viewports the same workflow **stacks** so mobile stays usable. The UI uses tab panels for Compose, `aria` labels on key controls, and keyboard shortcuts where noted (e.g. **Ctrl/Cmd+Enter** to send a refine).
+
+<p align="center">
+  <img width="380" alt="PostedIn stacked layout on a narrow viewport" src="public/postedin-mobile.png">
+  <br>
+  <b>Figure 6: Mobile layout — compose and preview stack on a narrow viewport.</b>
+</p>
+
+---
+
+## 7. Features, model, and stack
+
+**Features**
 
 - **Next.js App Router** with a server route at `/api/generate` that streams completions as **plain text** (`text/plain`) for simple client consumption.
 - **OpenAI Chat Completions** (`gpt-4o-mini`) with a fixed **system prompt** for LinkedIn-shaped output (hook → body → takeaway, under ~1,200 characters in instructions).
@@ -80,9 +115,8 @@ PostedIn helps you go from messy thoughts to a post-ready draft. The screenshots
 - **Client-side draft checkpoints**: After each successful AI update, a **checkpoint** stores post text + matching `refineTurns` for API consistency; restoring truncates newer history.
 - **`sanitizePostOutput`**: Normalizes dashes and typographic quotes in `lib/sanitizePost.ts` after each generation stream completes.
 - **Responsive layout**: Two-column **Compose / Output** on large screens; stacks on small screens. LinkedIn-inspired nav, borders, and typography tokens in Tailwind.
-- **Accessibility**: Tab panels for Compose, `aria` labels on key controls, keyboard shortcuts where noted (e.g. Ctrl/Cmd+Enter to send a refine).
 
-## Model & output shaping
+**Model & output shaping**
 
 The app does not expose a raw “system prompt” editor in the UI; behavior is defined in code (`lib/openai.ts`). In short:
 
@@ -90,7 +124,7 @@ The app does not expose a raw “system prompt” editor in the UI; behavior is 
 - **Refine** requests are applied with a **light touch**: change only what you asked, keep the rest stable unless you clearly want a larger rewrite.
 - **Improve hook** rewrites **only** the opening lines; **Sound more like me** rewrites the **full** post using your **writing sample** as the voice reference.
 
-## Technologies used
+**Technologies**
 
 - **Next.js 16** — App Router, React Server Components where applicable, API route streaming.
 - **React 19** — Client state for compose, refine, checkpoints, and streaming consumption.
@@ -99,7 +133,15 @@ The app does not expose a raw “system prompt” editor in the UI; behavior is 
 - **OpenAI Node SDK** — Streaming chat completions from the server only.
 - **Web Speech API** — Optional dictation in supported browsers (see `components/VoiceDictateButton.tsx`).
 
-## How to use
+<p align="center">
+  <img width="500" alt="PostedIn output actions Copy Regenerate Improve hook Sound more like me" src="public/postedin-output-actions.png">
+  <br>
+  <b>Figure 7: Output toolbar — Copy, Regenerate, Improve hook, and Sound more like me; lines up with the server actions listed above.</b>
+</p>
+
+---
+
+## 8. How to run and license
 
 1. **Clone and install**
    ```bash
@@ -114,7 +156,7 @@ The app does not expose a raw “system prompt” editor in the UI; behavior is 
    ```
    Open `.env.local` and set your [OpenAI API key](https://platform.openai.com/api-keys):
    ```
-  OPENAI_API_KEY=your_openai_api_key_here
+   OPENAI_API_KEY=your_openai_api_key_here
    ```
    Do **not** commit `.env.local` (it is gitignored). Each contributor uses their own key.
 
@@ -129,6 +171,10 @@ The app does not expose a raw “system prompt” editor in the UI; behavior is 
    - Switch to **Refine** to request edits; use **Draft history** or **Restore this version** on a bubble to roll back.
    - Use **Copy** when you’re happy, or **Regenerate** / **Improve hook** / **Sound more like me** from the output toolbar.
 
-## License
+<p align="center">
+  <img width="500" alt="PostedIn Draft history chips and restore" src="public/postedin-draft-history.png">
+  <br>
+  <b>Figure 8: Draft history — chips and restore; lives in the browser for the session only (no DB).</b>
+</p>
 
-MIT
+**License:** MIT
