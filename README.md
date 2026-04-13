@@ -4,9 +4,11 @@
 
 You can refine in plain English, **jump back to older drafts** when something goes sideways, and use shortcuts like **Improve hook** or **Sound more like me** (after you add a sample). **Dictation** works in the Prompt and Refine fields anywhere your browser supports the mic.
 
-You bring your **own OpenAI API key**. Nothing hits a database: refinement history stays in the **browser for that session only**.
+When you **self-host** (clone the repo and use `.env.local`), you configure **your own** `OPENAI_API_KEY` on the server—see [§8 How to Run](#8-how-to-run). The **public demo** at **[postedin.vercel.app](https://postedin.vercel.app)** is deployed on Vercel and uses the **maintainer’s** key in project settings, so visitors do not paste or see an API key.
 
-**PostedIn Demo:** [postedin-vercel-app](https://postedin-vercel-app.vercel.app)
+Nothing hits a database: refinement history stays in the **browser for that session only**.
+
+**PostedIn Demo:** [postedin.vercel.app](https://postedin.vercel.app)
 
 ## Contents
 
@@ -214,7 +216,7 @@ LinkedIn’s terms and developer policies generally **do not allow scraping or a
 
 **Live demo (hosted)**
 
-The public deployment runs on **Vercel** with **per-IP rate limiting** (Upstash) on `/api/generate` so casual abuse does not burn unlimited model usage. Self-hosted runs still rely on **your** OpenAI key and whatever limits you set in your account.
+The public deployment **[postedin.vercel.app](https://postedin.vercel.app)** runs on **Vercel** with **per-IP rate limiting** (Upstash) on `/api/generate` so casual abuse does not burn unlimited model usage. Self-hosted runs still rely on **your** OpenAI key and whatever limits you set in your account.
 
 ---
 
