@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { enforceGenerateRateLimit } from "@/lib/generateRateLimit";
 import { createCompletionStream, type GenerateAction } from "@/lib/openai";
 
 const ALLOWED_ACTIONS = new Set<string>([
@@ -24,6 +25,11 @@ function clampStr(v: unknown, max: number): string {
 
 export async function POST(req: NextRequest) {
   try {
+    const rate = await enforceGenerateRateLimit(req);
+    if (!rate.ok) {
+      return rate.response;
+    }
+
     let body: unknown;
     try {
       body = await req.json();
@@ -118,6 +124,7 @@ export async function POST(req: NextRequest) {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-store",
+        ...rate.headers,
       },
     });
   } catch (error: unknown) {

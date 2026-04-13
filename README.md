@@ -6,7 +6,7 @@ You can refine in plain English, **jump back to older drafts** when something go
 
 You bring your **own OpenAI API key**. Nothing hits a database: refinement history stays in the **browser for that session only**.
 
-**LinkedIn Post with Demo:** [PostedIn Video Showcase](https://www.linkedin.com/posts/khalidhossainconnect_bkurious-activity-7448769335575134209-9IB5)
+**PostedIn Demo:** [postedin-vercel-app](https://postedin-vercel-app.vercel.app)
 
 ## Contents
 
@@ -20,7 +20,8 @@ You bring your **own OpenAI API key**. Nothing hits a database: refinement histo
 | [6. Responsive Layout and Accessibility](#6-responsive-layout-and-accessibility) | Narrow Viewport Stack |
 | [7. Features, Model, and Stack](#7-features-model-and-stack) | Output Toolbar (Actions in UI) |
 | [8. How to Run](#8-how-to-run) | Draft History / Session Workflow |
-| [9. License](#9-license) | MIT |
+| [9. Restrictions and Platform Scope](#9-restrictions-and-platform-scope) | LinkedIn rules; no scraping |
+| [10. License](#10-license) | MIT |
 
 ---
 
@@ -197,6 +198,26 @@ Then open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## 9. License
+## 9. Restrictions and Platform Scope
+
+PostedIn is a **standalone writing assistant**. It is **not** affiliated with LinkedIn, and it does **not** connect to your LinkedIn account.
+
+**LinkedIn and member data**
+
+LinkedIn’s terms and developer policies generally **do not allow scraping or automated collection of member data** (profiles, feeds, connections, etc.). That is a hard boundary for legitimate products. This app **never** pulls data from LinkedIn: you **paste** your own prompt, and you **optionally paste** a writing sample you already have. Anything you generate is based only on what **you** provide.
+
+**What that meant for the build**
+
+- No “log in with LinkedIn” or API flow to read your past posts from the network.
+- No importing a profile or feed as a shortcut for tone or content; the sample field exists so **you** supply text you’re allowed to use.
+- Copy and paste out to LinkedIn stays a **manual** step on purpose: you stay in control of what gets published.
+
+**Live demo (hosted)**
+
+The public deployment runs on **Vercel** with **per-IP rate limiting** (Upstash) on `/api/generate` so casual abuse does not burn unlimited model usage. Self-hosted runs still rely on **your** OpenAI key and whatever limits you set in your account.
+
+---
+
+## 10. License
 
 MIT
