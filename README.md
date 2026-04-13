@@ -1,14 +1,10 @@
 # PostedIn
 
-**PostedIn** is a **LinkedIn-style writing assistant**. You drop rough notes into a **Prompt**, optionally add a **writing sample** so the tone matches yours, then hit **generate**. The draft **streams** into a feed-style **preview**, so you watch it take shape the way it would on LinkedIn instead of reading a wall of chat text.
+PostedIn is a LinkedIn-style writing assistant built to help you turn rough notes into a post you’d actually publish, faster. Instead of a generic chat layout, you write a **Prompt**, optionally add a **writing sample** so tone and line breaks feel like you, then generate — the draft **streams** into a feed-style preview so it reads like a real LinkedIn post from the first sentence.
 
-You can refine in plain English, **jump back to older drafts** when something goes sideways, and use shortcuts like **Improve hook** or **Sound more like me** (after you add a sample). **Dictation** works in the Prompt and Refine fields anywhere your browser supports the mic.
+Refine in plain English, jump back through **draft history** when an edit misses, and use shortcuts like **Improve hook** or **Sound more like me** (after you add a sample). **Dictation** works in Prompt and Refine wherever your browser supports the mic. Nothing hits a database: refinement history stays in the **browser for that session only**.
 
-When you **self-host** (clone the repo and use `.env.local`), you configure **your own** `OPENAI_API_KEY` on the server—see [§8 How to Run](#8-how-to-run). The **public demo** at **[postedin-v2.vercel.app](https://postedin-v2.vercel.app)** is deployed on Vercel and uses the **maintainer’s** key in project settings, so visitors do not paste or see an API key.
-
-Nothing hits a database: refinement history stays in the **browser for that session only**.
-
-**PostedIn Demo:** [postedin-v2.vercel.app](https://postedin-v2.vercel.app)
+Live Demo: postedin-v2.vercel.app
 
 ## Contents
 
