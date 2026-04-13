@@ -112,7 +112,7 @@ Wide screens: **Compose** and **Output** sit side by side. Narrow screens: the s
 
 ---
 
-## 7. Features, Model, and Stack
+## 7. Features, Stack, and Model
 
 ### What the App Does (Implementation)
 
@@ -122,14 +122,6 @@ Wide screens: **Compose** and **Output** sit side by side. Narrow screens: the s
 - **Draft Checkpoints (Client):** After each successful AI update, a **checkpoint** stores post text and matching `refineTurns`. Restoring rolls back newer history so API calls stay consistent.
 - **`sanitizePostOutput`:** Lives in `lib/sanitizePost.ts`. Runs after streams finish to normalize dashes and typographic quotes.
 - **Layout:** Two columns on large screens, stack on small. Nav, borders, and type lean LinkedIn-adjacent via Tailwind tokens.
-
-### Model Behavior
-
-There is no “edit system prompt” screen. Behavior lives in code (`lib/openai.ts`). Roughly:
-
-- Bias toward **human**, **non-buzzy** LinkedIn copy. Instructions avoid em dash characters, and post-processing still cleans punctuation.
-- **Refine** should change **only** what you asked for unless you clearly want a bigger rewrite.
-- **Improve hook** touches **opening lines only**. **Sound more like me** rewrites the **full** post using your **writing sample** as the reference.
 
 ### Tech List
 
@@ -141,6 +133,14 @@ There is no “edit system prompt” screen. Behavior lives in code (`lib/openai
 | **Tailwind CSS 4** | Layout, palette, components |
 | **OpenAI Node SDK** | Chat completions from the server only |
 | **Web Speech API** | Optional dictation (`components/VoiceDictateButton.tsx`) |
+
+### Model Behavior
+
+There is no “edit system prompt” screen. Behavior lives in code (`lib/openai.ts`). Roughly:
+
+- Bias toward **human**, **non-buzzy** LinkedIn copy. Instructions avoid em dash characters, and post-processing still cleans punctuation.
+- **Refine** should change **only** what you asked for unless you clearly want a bigger rewrite.
+- **Improve hook** touches **opening lines only**. **Sound more like me** rewrites the **full** post using your **writing sample** as the reference.
 
 <p align="center">
   <img width="500" alt="PostedIn output actions Copy Regenerate Improve hook Sound more like me" src="public/postedin-output-actions.png">
