@@ -10,6 +10,7 @@ import {
 } from "@/lib/draftCheckpoint";
 import { COMPOSER_ROW, COMPOSER_TEXTAREA_BASE } from "@/lib/composerField";
 import { useComposerAutosize } from "@/lib/useComposerAutosize";
+import { useMdUp } from "@/lib/useMdUp";
 
 interface RefineChatProps {
   refineInput: string;
@@ -39,11 +40,16 @@ export default function RefineChat({
   panelActive = true,
 }: RefineChatProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
+  const mdUp = useMdUp();
+  const refineEmptyMin = mdUp ? 28 : 40;
+  const refineEmptyMax = mdUp ? 48 : 54;
   const refineTextareaRef = useComposerAutosize(
     refineInput,
     160,
     panelActive,
-    isLoading
+    isLoading,
+    refineEmptyMin,
+    refineEmptyMax
   );
 
   useEffect(() => {
@@ -183,7 +189,8 @@ export default function RefineChat({
               }
             }}
             rows={1}
-            placeholder="What should change in the draft?"
+            placeholder="What to change…"
+            enterKeyHint="send"
             disabled={isLoading}
             className={`${COMPOSER_TEXTAREA_BASE} disabled:opacity-50 max-h-[160px]`}
           />
@@ -193,12 +200,12 @@ export default function RefineChat({
             onClick={onRefine}
             disabled={isLoading || !refineInput.trim()}
             aria-label="Send refinement"
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-linkedin-blue text-white shadow-sm transition-colors hover:bg-linkedin-blue-hover disabled:pointer-events-none disabled:bg-linkedin-border disabled:text-linkedin-secondary disabled:shadow-none"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linkedin-blue text-white shadow-sm transition-colors hover:bg-linkedin-blue-hover md:h-7 md:w-7 disabled:pointer-events-none disabled:bg-linkedin-border disabled:text-linkedin-secondary disabled:shadow-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="h-3.5 w-3.5"
+              className="h-5 w-5 md:h-3.5 md:w-3.5"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.25"

@@ -4,6 +4,7 @@ import type { Dispatch, SetStateAction } from "react";
 import VoiceDictateButton from "@/components/VoiceDictateButton";
 import { COMPOSER_ROW, COMPOSER_TEXTAREA_BASE } from "@/lib/composerField";
 import { useComposerAutosize } from "@/lib/useComposerAutosize";
+import { useMdUp } from "@/lib/useMdUp";
 
 interface InputFormProps {
   thoughts: string;
@@ -19,8 +20,9 @@ interface InputFormProps {
 const PROMPT_MAX_H = 400;
 const SAMPLE_MAX_H = 400;
 
-const EMPTY_FIELD_MIN_H = 28;
-const EMPTY_FIELD_MAX_H = 52;
+const EMPTY_FIELD_DESKTOP = { min: 28, max: 52 } as const;
+/** Match h-10 (40px) action buttons; max keeps one-line placeholder from over-growing. */
+const EMPTY_FIELD_MOBILE = { min: 40, max: 54 } as const;
 
 export default function InputForm({
   thoughts,
@@ -31,21 +33,25 @@ export default function InputForm({
   isLoading,
   panelActive,
 }: InputFormProps) {
+  const mdUp = useMdUp();
+  const emptyMin = mdUp ? EMPTY_FIELD_DESKTOP.min : EMPTY_FIELD_MOBILE.min;
+  const emptyMax = mdUp ? EMPTY_FIELD_DESKTOP.max : EMPTY_FIELD_MOBILE.max;
+
   const thoughtsRef = useComposerAutosize(
     thoughts,
     PROMPT_MAX_H,
     panelActive,
     isLoading,
-    EMPTY_FIELD_MIN_H,
-    EMPTY_FIELD_MAX_H
+    emptyMin,
+    emptyMax
   );
   const sampleRef = useComposerAutosize(
     writingSample,
     SAMPLE_MAX_H,
     panelActive,
     isLoading,
-    EMPTY_FIELD_MIN_H,
-    EMPTY_FIELD_MAX_H
+    emptyMin,
+    emptyMax
   );
 
   return (
@@ -58,8 +64,7 @@ export default function InputForm({
           Prompt
         </label>
         <p className="text-[12px] text-linkedin-secondary mb-2 leading-snug">
-          Dump rough ideas, bullets, or half-formed sentences. The model will
-          shape them into a post.
+          Rough ideas or bullets—the model shapes them into a post.
         </p>
         <div className={COMPOSER_ROW}>
           <textarea
@@ -68,7 +73,7 @@ export default function InputForm({
             rows={1}
             value={thoughts}
             onChange={(e) => setThoughts(e.target.value)}
-            placeholder="What happened, what you learned, what you want people to take away..."
+            placeholder="Ideas, lessons, takeaway…"
             disabled={isLoading}
             className={`${COMPOSER_TEXTAREA_BASE} disabled:opacity-50 max-h-[400px]`}
           />
@@ -84,8 +89,7 @@ export default function InputForm({
           Your Writing Sample
         </label>
         <p className="text-[12px] text-linkedin-secondary mb-2 leading-snug">
-          Paste one or two things you&apos;ve already posted or written. The
-          model uses this for structure, pacing, line breaks, and voice.
+          A sample of your writing helps match structure, pacing, and voice.
         </p>
         <div className={COMPOSER_ROW}>
           <textarea
@@ -94,7 +98,7 @@ export default function InputForm({
             rows={1}
             value={writingSample}
             onChange={(e) => setWritingSample(e.target.value)}
-            placeholder="Old LinkedIn posts, emails, or notes that sound like you..."
+            placeholder="Posts or notes that sound like you…"
             disabled={isLoading}
             className={`${COMPOSER_TEXTAREA_BASE} disabled:opacity-50 max-h-[400px]`}
           />

@@ -21,6 +21,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Single-line composer fields: kill UA padding/margins so text lines up with pill + icon row. */
+textarea.composer-field-textarea {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 ::selection {
   background: #d0e8ff;
 }

@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type Dispatch,
   type SetStateAction,
 } from "react";
@@ -34,16 +35,19 @@ export default function VoiceDictateButton({
   setValue,
   disabled = false,
 }: VoiceDictateButtonProps) {
-  const [browserOk, setBrowserOk] = useState(false);
+  const browserOk = useSyncExternalStore(
+    () => () => {},
+    isVoiceDictationSupported,
+    () => false
+  );
   const [listening, setListening] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const recRef = useRef<SpeechRecognition | null>(null);
   const setValueRef = useRef(setValue);
-  setValueRef.current = setValue;
 
   useEffect(() => {
-    setBrowserOk(isVoiceDictationSupported());
-  }, []);
+    setValueRef.current = setValue;
+  }, [setValue]);
 
   useEffect(() => {
     if (!error) return;
@@ -135,16 +139,16 @@ export default function VoiceDictateButton({
             ? "Stop listening"
             : "Speak to type (uses your microphone)"
         }
-        className={`flex h-7 w-7 items-center justify-center rounded-full border shadow-sm transition-colors disabled:pointer-events-none disabled:opacity-40 ${
+        className={`flex h-10 w-10 box-border items-center justify-center rounded-full shadow-sm ring-1 ring-inset transition-colors md:h-7 md:w-7 disabled:pointer-events-none disabled:opacity-40 ${
           listening
-            ? "border-red-300 bg-red-50 text-red-600"
-            : "border-linkedin-border bg-white text-linkedin-secondary hover:bg-linkedin-hover"
+            ? "bg-red-50 text-red-600 ring-red-300"
+            : "bg-white text-linkedin-secondary ring-linkedin-border hover:bg-linkedin-hover"
         }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          className="h-3.5 w-3.5"
+          className="h-5 w-5 md:h-3.5 md:w-3.5"
           fill="currentColor"
           aria-hidden
         >
