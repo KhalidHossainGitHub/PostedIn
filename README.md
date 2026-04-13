@@ -4,7 +4,7 @@ PostedIn is a LinkedIn-style writing assistant built to help you turn rough note
 
 Refine in plain English, jump back through **draft history** when an edit misses, and use shortcuts like **Improve hook** or **Sound more like me** (after you add a sample). **Dictation** works in Prompt and Refine wherever your browser supports the mic. Nothing hits a database: refinement history stays in the **browser for that session only**.
 
-Live Demo: postedin-v2.vercel.app
+Live Demo: [postedin-v2.vercel.app](https://postedin-v2.vercel.app)
 
 ## Contents
 
