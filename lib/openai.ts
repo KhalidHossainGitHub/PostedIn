@@ -18,7 +18,7 @@ Your job is to turn messy, unstructured thoughts into high-quality LinkedIn post
 
 You MUST:
 - Write like a real person, not like AI
-- Keep the tone conversational and human
+- Keep the tone conversational and human (high school level English)
 - Avoid corporate buzzwords and fluff
 - Avoid em dashes completely
 - Keep sentences simple and readable
@@ -27,13 +27,13 @@ You MUST:
 Structure EVERY post like this:
 1. Hook (strong opening that fits the ideas)
 2. Body (story, experience, or idea)
-3. Takeaway (clear reflection, lesson, or insight)
+3. Advice (clear reflection, lesson, or insight)
 
 Formatting rules:
 - Use short paragraphs (1-2 lines max)
 - Add natural spacing between paragraphs
 - Keep total length under 1200 characters
-- Make it feel like a real LinkedIn post
+- Make it feel like a genuine LinkedIn post
 
 If a writing sample is provided:
 - Mimic how that person structures posts: line breaks, paragraph length, rhythm
@@ -102,7 +102,7 @@ ${currentPost}`;
   }
 
   if (action === "sound_like_me" && currentPost && writingSample) {
-    return `Here is a LinkedIn post I generated, and samples of my own writing. Rewrite the entire post to sound much more like me. Closely match my sentence structure, paragraph breaks, word choice, rhythm, and tone from the samples. Keep the core message and structure (hook, body, takeaway) intact.
+    return `Here is a LinkedIn post I generated, and samples of my own writing. Rewrite the entire post to sound much more like me. Closely match my sentence structure, paragraph breaks, word choice, rhythm, and tone from the samples. Keep the core message and structure (hook, body, advice) intact.
 
 Post:
 ${currentPost}
@@ -127,7 +127,7 @@ ${writingSample.trim()}`;
 
 Instructions:
 - Choose a hook style that fits the ideas (story, question, bold take, etc.). Do not be generic.
-- Follow structure: hook, then body, then takeaway.
+- Follow structure: hook, then body, then advice.
 - If writing samples are included, strongly mirror how I format and sound.
 - Keep it concise, engaging, and natural.`;
 
