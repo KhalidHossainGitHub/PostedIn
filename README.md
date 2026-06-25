@@ -6,6 +6,12 @@ Refine in plain English, jump back through **draft history** when an edit misses
 
 Live Demo: [postedin-v2.vercel.app](https://postedin-v2.vercel.app)
 
+<p align="center">
+  <img width="932" alt="HikeWise Preview" src="public\postedin-preview.png">
+  <br>
+  <b>Figure 1: PostedIn Preview</b>
+</p>
+
 ## Contents
 
 | | |
@@ -30,7 +36,7 @@ If you want LinkedIn-ready text without living inside a chat app, this is basica
 <p align="center">
   <img width="900" alt="PostedIn logo mark" src="public/postedin-preview.png">
   <br>
-  <b>Figure 1: Product Mark for the Repo and Docs</b>
+  <b>Figure 2: Product Mark for the Repo and Docs</b>
 </p>
 
 ---
@@ -59,7 +65,7 @@ The layout is a **compose rail** on one side (Prompt, optional sample, tabs) and
 <p align="center">
   <img width="900" alt="PostedIn full workspace overview" src="public/postedin-overview.png">
   <br>
-  <b>Figure 2: Nav, Compose Rail, and Preview in One Frame</b>
+  <b>Figure 3: Nav, Compose Rail, and Preview in One Frame</b>
 </p>
 
 ---
@@ -71,7 +77,7 @@ Use **Input** for the **Prompt** and **Your writing sample**. **Refine** sits on
 <p align="center">
   <img width="500" alt="PostedIn Prompt field with voice dictation" src="public/postedin-prompt-voice.png">
   <br>
-  <b>Figure 3: Prompt with Mic.</b> Include the sample field in the same capture if it reads better.
+  <b>Figure 4: Prompt with Mic.</b> Include the sample field in the same capture if it reads better.
 </p>
 
 ---
@@ -83,7 +89,7 @@ The post **streams** into a **feed-style card** so it reads like LinkedIn, not a
 <p align="center">
   <img width="500" alt="PostedIn output preview card" src="public/postedin-output.png">
   <br>
-  <b>Figure 4: Where the Draft Lands and Streams In</b>
+  <b>Figure 5: Where the Draft Lands and Streams In</b>
 </p>
 
 ---
@@ -95,7 +101,7 @@ The post **streams** into a **feed-style card** so it reads like LinkedIn, not a
 <p align="center">
   <img width="500" alt="PostedIn Refine tab and thread" src="public/postedin-refine.png">
   <br>
-  <b>Figure 5: Refine Thread for Iterative Edits</b>
+  <b>Figure 6: Refine Thread for Iterative Edits</b>
 </p>
 
 ---
@@ -107,7 +113,7 @@ Wide screens: **Compose** and **Output** sit side by side. Narrow screens: the s
 <p align="center">
   <img width="380" alt="PostedIn stacked layout on a narrow viewport" src="public/postedin-mobile.png">
   <br>
-  <b>Figure 6: Stacked Compose and Preview on a Small Viewport</b>
+  <b>Figure 7: Stacked Compose and Preview on a Small Viewport</b>
 </p>
 
 ---
@@ -145,7 +151,7 @@ There is no “edit system prompt” screen. Behavior lives in code (`lib/openai
 <p align="center">
   <img width="500" alt="PostedIn output actions Copy Regenerate Improve hook Sound more like me" src="public/postedin-output-actions.png">
   <br>
-  <b>Figure 7: Output Toolbar Aligned With the Server Actions Above</b>
+  <b>Figure 8: Output Toolbar Aligned With the Server Actions Above</b>
 </p>
 
 ---
@@ -191,7 +197,7 @@ Then open [http://localhost:3000](http://localhost:3000).
 <p align="center">
   <img width="500" alt="PostedIn Draft history chips and restore" src="public/postedin-draft-history.png">
   <br>
-  <b>Figure 8: Draft History and Restore.</b> Session-only, browser storage, no database.
+  <b>Figure 9: Draft History and Restore.</b> Session-only, browser storage, no database.
 </p>
 
 ---
